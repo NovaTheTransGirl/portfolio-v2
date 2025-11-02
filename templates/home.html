@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}home{% endblock %}
+{% block content %}
+    <h1>hello there!</h1>
+    <p>you are always welcome here :3</p>
+
+    <div class="buttons">
+        <a href="{{ url_for('portfolio') }}" class="button">visit portfolio</a>
+        <a href="{{ url_for('about') }}" class="button">more about me</a>
+    </div>
+{% endblock %}

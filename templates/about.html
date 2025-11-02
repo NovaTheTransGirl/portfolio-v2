@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block title %}about{% endblock %}
+{% block content %}
+<style>
+    .section-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-top: 30px;
+        text-align: left;
+    }
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    .section h2 {
+        font-size: 1.2em;
+        font-weight: 600;
+        margin-bottom: 8px;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 4px;
+    }
+
+    /* Tooltip styling */
+    .tooltip {
+        position: relative;
+        text-decoration: underline dotted;
+        cursor: help;
+    }
+
+    .tooltip::after {
+    content: attr(data-tooltip);
+    white-space: pre-wrap;       /* keeps newlines */
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f5f5f5;
+    color: #000;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-size: 0.85em;
+    max-width: 300px;           /* ensures tooltip doesn't stretch too far */
+    line-height: 1.3em;         /* more compact spacing */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 10;
+}
+
+
+    .tooltip:hover::after {
+        opacity: 1;
+    }
+
+    @media (max-width: 700px) {
+        .section-container {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<h1 style="margin-bottom: 10px;">about me</h1>
+<p><strong>nova</strong><br>
+she/they • autistic • transgirl • aromantic • furry<br>
+orbiting the sun for <span id="orbitYears">...</span> years |  
+<a href="https://en.pronouns.page/@novadevv" target="_blank" style="text-decoration: underline; color: inherit;">prns</a>
+
+
+<div class="section-container">
+
+    <div class="section">
+        <h2>Interests</h2>
+        <p>space, game development, astrophysics, shark ! !</p>
+    </div>
+
+    <div class="section">
+        <h2>Games I Play</h2>
+        <p>minecraft, genshin impact, rec room, stardew valley</p>
+    </div>
+
+    <div class="section">
+        <h2>Likes</h2>
+        <p>sharks, my friends, caseoh, physical touch, hugs, cuddles</p>
+    </div>
+
+    <div class="section">
+        <h2>Dislikes</h2>
+        <p>loud noises, physical touch from anyone other than my friends.</p>
+    </div>
+
+    <div class="section full-width">
+        <h2>Favourite Artists</h2>
+        <p>salvia palth, c418, mccafferty, penelope scott, milli, msi, hamilton, miracle musical, girl in red, 36 questions, alex g, set it off, radiohead</p>
+    </div>
+
+    <div class="section full-width">
+        <h2>Friends</h2>
+        <p>emily, harriet, alyx/zero, jolly, jay</p>
+    </div>
+
+    <div class="section full-width">
+        <h2>Do Not Interact</h2>
+        <p>
+            <span class="tooltip" data-tooltip="homophobia&#10;transphobia&#10;racism&#10;sexism&#10;pedophiles&#10;trump supporters&#10;neo nazis">basic dni criteria</span>, gospel, 18+ or 13- unless i interact first
+        </p>
+    </div>
+
+    <div class="section full-width">
+        <h2>Before You Interact</h2>
+        <p>
+            horrible memory, extremely sensitive, may block/mute/ignore you without reasoning,<br>
+            i have a tendency to do things impulsively, always respect my 
+            
+            <span class="tooltip" data-tooltip="do not interact">dni</span>
+            <span class="tooltip" data-tooltip="do not interact unless interacted first">dniuif</span>
+            <span class="tooltip" data-tooltip="do not interact unless close">dniuc</span>
+            <span class="tooltip" data-tooltip="do not interact unless dating">dniud</span>
+            <span class="tooltip" data-tooltip="interact with care">iwcare</span>
+            <span class="tooltip" data-tooltip="interact with extreme care">iwec</span>
+
+
+        </p>
+    </div>
+    <div class="section full-width">
+        <h2>Fears</h2>
+        <p>Trypophobia - (fear of small holes)</p>
+        <p>Arachnophobia - (fear of spiders)</p>
+        <p>Ophidiophobia - (fear of snakes)</p>
+        <p>Zoophobia - (fear of most animals)</p>
+        <p>Cynophobia - (fear of big dogs)</p>
+        <p>Acrophobia - (fear of heights)</p>
+        <p>Nyctophobia - (fear of the dark)</p>
+        <p>Xenophobia - (fear of the unknown or strangers)</p>
+        <p>Thalassophobia - (fear of oceans)</p>
+        <p>Aquaphobia - (fear of swimming)</p>
+        <p>Atychiphobia - (fear of failure)</p>
+        <p>Scopophobia - (fear of being watched)</p>
+        <p>Anatidaephobia - (fear of being watched by ducks or geese)</p>
+        <p>Entomophobia - (fear of bugs)</p>
+        <p>Monophobia - (fear of losing friends / being alone)</p>
+        <p>Chronophobia - (fear of the future)</p>
+        <p>Famephobia - (fear of fame)</p>
+        <p>Anthropophobia - (fear of people)</p>
+        <p>Peniphobia - (fear of homelessness or poverty)</p>
+        <p>Abduction Anxiety - (fear of being kidnapped)</p>
+
+    </div>
+</div>
+
+<div class="buttons" style="margin-top: 40px;">
+    <a href="{{ url_for('home') }}" class="button">back home</a>
+    <a href="{{ url_for('portfolio') }}" class="button">portfolio</a>
+</div>
+
+<script>
+    // dynamically calculate orbit years
+    const startDate = new Date("2010-10-29T00:00:00");
+    const now = new Date();
+    const diff = now - startDate;
+    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+    document.getElementById("orbitYears").textContent = years;
+</script>
+
+{% endblock %}
